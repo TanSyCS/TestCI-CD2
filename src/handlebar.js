@@ -48,18 +48,18 @@ handlebars.registerHelper('discount', function (price, discount, block) {
 handlebars.registerHelper("ifStates", function (states, id, block) {
     console.log(states)
     if (states == "NA") {
-        return '<td><a href="/admin/cooking/' + id + '" class="btn states-btn btn-outline-success btn-sm">Cooking</a></td>';
+        return '<td><a href="/admin/cooking/' + id + '" class="btn states-btn btn-outline-success btn-sm">Chế biến</a></td>';
     } else if (states == "Cooking") {
-        return '<td><a href="/admin/deliver/' + id + '" class="btn states-btn btn-outline-warning btn-sm ">Deliver</a></td>';
+        return '<td><a href="/admin/deliver/' + id + '" class="btn states-btn btn-outline-warning btn-sm ">Giao hàng</a></td>';
     }else if(states == "Out for deliver."){
-        return '<td><a href="/admin/handover/' + id + '" class="btn states-btn btn-outline-danger btn-sm">Handover</a></td>';
+        return '<td><a href="/admin/handover/' + id + '" class="btn states-btn btn-outline-danger btn-sm">Đã nhận</a></td>';
     }else{
-        return '<td><a class="btn btn-outline-dark states-btn btn-sm disabled">Completed</a></td>';
+        return '<td><a class="btn btn-outline-dark states-btn btn-sm disabled">Hoàn thành</a></td>';
     }
 })
 
 handlebars.registerHelper("ifCancelOrder",function(states,id,block){
     if(states=="NA"){
-        return '<a href="/user/cancelOrder/'+id+'" class="main-btn">Cancel order</a>';
+        return '<a href="/user/cancelOrder/'+id+'" class="main-btn">Hủy đặt món</a>';
     }
 })

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BKFOOD - Thực đơn</title>
 </head>
 
 <body>
@@ -22,17 +22,17 @@
                     <div class="col-md-9">
                         <div class="adminPanel card">
                             <div class="text-center mt-1 mb-2">
-                                <h4><span class="primary-color">FOODIES</span> Menu Card.</h4>
+                                <h4>Thực đơn <span class="primary-color">BKFOOD</span></h4>
                             </div>
                             <table class="table table-striped">
                                 <thead class="">
                                     <tr >
-                                        <th scope="col">Photo</th>
-                                        <th scope="col">Dish Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Discount</th>
-                                        <th scope="col">C. time</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Hình ảnh</th>
+                                        <th scope="col">Tên món ăn</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Giảm giá</th>
+                                        <th scope="col">Thời gian chế biến</th>
+                                        <th scope="col">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,9 +47,9 @@
                                         <td>{{this.ddiscount}}</td>
                                         <td>{{this.dtime}}</td>
                                         <td>
-                                            <button onclick="editDish('{{this._id}}')" class="btn btn-sm btn-warning">Edit</button>
+                                            <button onclick="editDish('{{this._id}}')" class="btn btn-sm btn-warning">Chỉnh sửa</button>
                                             <button onclick="deleteDish('{{this._id}}')"
-                                                class="btn btn-sm btn-danger">Remove</button>
+                                                class="btn btn-sm btn-danger">Loại bỏ</button>
                                         </td>
 
                                     </tr>
@@ -68,7 +68,7 @@
                                         href="/admin/dishMenus/{{#prevPage currentPage}}{{/prevPage}}"
                                         aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
+                                        <span class="sr-only">Trước</span>
                                     </a>
                                 </li>
                                 {{#times count}}
@@ -80,7 +80,7 @@
                                         href="/admin/dishMenus/{{#nextPage currentPage}}{{/nextPage}}"
                                         aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
+                                        <span class="sr-only">Sau</span>
                                     </a>
                                 </li>
                             </ul>

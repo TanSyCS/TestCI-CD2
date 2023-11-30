@@ -62,7 +62,7 @@
                 paymentType = 'online';
             else {
                 Swal.fire({
-                    title: 'Please select payment type',
+                    title: 'Vui lòng chọn phương thức thanh toán',
                     icon: 'info',
                     confirmButtonText: 'Ok!'
                 })
@@ -80,13 +80,13 @@
                     localStorage.clear();
 
                     console.log(document.getElementById("orderPlaced"))
-                    document.getElementById("orderPlaced").innerHTML = `<div class="text-success px-3">Your order is successfully placed...</div>`;
+                    document.getElementById("orderPlaced").innerHTML = `<div class="text-success px-3">Đặt món thành công...</div>`;
 
                 },
                 error: function (data) {
                     Swal.fire({
                         title: 'Error Ocured!!',
-                        text: 'This order is not placed something wrong. sorry for issue...',
+                        text: 'Rất tiếc, đơn đặt món của bạn không thành công...',
                         icon: 'error',
                         confirmButtonText: 'Ok!'
                     })

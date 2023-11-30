@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
+    <title>BKFOOD - Đơn đặt món</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 
             <div class="container userSection">
                 <div class="text-center mb-1">
-                    <h4><span class="primary-color">BKFOOD</span> Current Order.</h4>
+                    <h4>Các đơn đặt món tại <span class="primary-color">BKFOOD</span></h4>
                 </div>
                 <div class="row">
                     {{#each orderFood}}
@@ -61,8 +61,8 @@
 {{#if cancelOrder}}
 <script>
     Swal.fire({
-        title: 'Order cancel',
-        text: 'Order is canceled successfully,...',
+        title: 'Hủy đơn',
+        text: 'Đã hủy đơn đặt món,...',
         icon: 'success',
         confirmButtonText: 'Ok!'
     })

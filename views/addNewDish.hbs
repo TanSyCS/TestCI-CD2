@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new dish</title>
+    <title>BKFOOD - Admin</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
                     <div class="col-md-9 ">
                         <div class="adminPanel card">
                             <div class="text-center my-1">
-                                <h4><span class="primary-color">FOODIES</span> New Dish.</h4>
+                                <h4>Thêm món ăn mới cho <span class="primary-color">BKFOOD</span></h4>
                             </div>
                             <div class="mb-4 mt-2 mx-2">
                                 <div class="row">
@@ -30,38 +30,38 @@
 
                                         <form action="/saveDish" method="post" enctype="multipart/form-data">
                                             <input name="dname" type="text" class="my-2 form-control"
-                                                placeholder="Enter dish name">
+                                                placeholder="Nhập vào tên món ăn">
                                             <input name="dtype" type="text" class="my-2 form-control"
-                                                placeholder="Enter dish type">
+                                                placeholder="Nhập vào loại món ăn">
 
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <input name="dprice" type="text" class="my-2 form-control"
-                                                        placeholder="Enter dish price">
+                                                        placeholder="Nhập vào giá thành">
                                                 </div>
                                                 <div class="col-md-6">
                                                      <input name="dserve" type="text" class="my-2 form-control"
-                                                placeholder="Enter dish serve contity..">
+                                                placeholder="Nhập số lượng phục vụ của món ăn">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                    <input name="dtime" type="text" class="my-2 form-control"
-                                                placeholder="Enter required time">
+                                                placeholder="Nhập vào thời gian chế biến">
                                                 </div>
                                                 <div class="col-md-6">
                                                      <input name="ddiscount" type="text" class="my-2 form-control"
-                                                placeholder="Enter discount ..." min="0" max="100">
+                                                placeholder="Nhập vào mức giảm giá" min="0" max="100">
                                                 </div>
                                             </div>
 
                                             
-                                            <label class="my-2" for="photo">Food Pic : </label>
+                                            <label class="my-2" for="photo">Hình ảnh món ăn: </label>
                                             <input type="file" name="photo" id="photo">
                                             <textarea class="my-2 form-control" name="discription" id="" cols="30"
                                                 rows="4"></textarea>
                                             <div class="text-right">
-                                                <button class="main-btn my-2 mx-2">Add Food</button>
+                                                <button class="main-btn my-2 mx-2">Thêm món ăn</button>
                                             </div>
                                         </form>
                                     </div>
@@ -82,8 +82,8 @@
 {{#if save}}
 <script>
     Swal.fire({
-        title: 'New Dish Added!',
-        text: 'Dish is added to outr menu card...',
+        title: 'Món ăn mới!',
+        text: 'Món ăn mới đã được thêm vào menu...',
         icon: 'success',
         confirmButtonText: 'OK'
     })
@@ -93,8 +93,8 @@
 {{#if notsave}}
 <script>
     Swal.fire({
-        title: 'Something is wrong!',
-        text: 'Please fill the important information. dish is not save to our menu card...',
+        title: 'Opps!',
+        text: 'Món ăn không được thêm thành công, vui lòng điền đầy đủ các thông tin...',
         icon: 'error',
         confirmButtonText: 'Cancel'
     })

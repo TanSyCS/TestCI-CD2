@@ -135,7 +135,7 @@ route.get("/admin/dishMenus/:page", async function (req, res) {
                 count: totalPage
             })
         } else {
-            res.send(`<h1>Something Wrong !!</h1> <h2>Opps! you can not acess this page..</h2> `)
+            res.send(`<h1>Opps !!</h1> <h2>Bạn không thể truy cập trang này</h2> `)
         }
     } else
         res.render("login", {
@@ -205,7 +205,7 @@ route.get('/admin/deleteDish/:id', async (req, res) => {
                 delete: true
             })
         } else {
-            res.send("<h1>Server Error !!</h1><h2> Soory dish is not deleted p;ease try letter..</br><a href='/admin/dishMenus/1'>Back to dish menu table</a> </h2>")
+            res.send("<h1>Lỗi hệ thống !!</h1><h2> Xóa món ăn không thành công, hãy thử lại...</br><a href='/admin/dishMenus/1'>Danh sách món ăn</a> </h2>")
         }
     } else
         res.render("login", {
@@ -250,7 +250,7 @@ route.get("/admin/cooking/:id", async (req, res) => {
             const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Cooking" } })
             res.redirect("/admin/adminOrder/1")
         }else
-        res.send("<h2>Wrong page try to access...</h2>")
+        res.send("<h2>Truy cập sai trang web...</h2>")
     } else {
         res.render("login", {
             loginFirst: true
@@ -265,7 +265,7 @@ route.get("/admin/deliver/:id", async (req, res) => {
             
             res.redirect("/admin/adminOrder/1")
         }else
-        res.send("<h2>Wrong page try to access...</h2>")
+        res.send("<h2>Truy cập sai trang web...</h2>")
     } else {
         res.render("login", {
             loginFirst: true
@@ -280,7 +280,7 @@ route.get("/admin/handover/:id", async (req, res) => {
     
             res.redirect("/admin/adminOrder/1")
         }else
-        res.send("<h2>Wrong page try to access...</h2>")
+        res.send("<h2>Truy cập sai trang web...</h2>")
     } else {
         res.render("login", {
             loginFirst: true
@@ -301,12 +301,12 @@ route.get("/admin/editDish/:id/:flag", async (req, res) => {
                     loginUser: loginUser
                 })
             } else {
-                res.send(`<h1>Something Wrong !!</h1> <h2>Opps! Dish not Found...</h2> `)
+                res.send(`<h1>Opps !!</h1> <h2>Không tìm thấy món ăn...</h2> `)
 
             }
 
         } else {
-            res.send(`<h1>Something Wrong !!</h1> <h2>Opps! you can not acess this page..</h2> `)
+            res.send(`<h1>Opps !!</h1> <h2>Bạn không thể truy cập trang này..</h2> `)
         }
     } else
         res.render("login", {
