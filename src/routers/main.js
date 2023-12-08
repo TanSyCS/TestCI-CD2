@@ -4,6 +4,7 @@ const session = require('express-session')
 const route = express.Router();
 const User = require('../modul/user')
 const dish = require("../modul/dish");
+const search_history = require("../modul/search_history")
 // const dishSample = require("../modul/dishesSample.json");
 const order = require('../modul/order')
 const { __express } = require('hbs');
@@ -40,17 +41,29 @@ route.get("/foods/:page", async (req, res) => {
     const start = (currentPage - 1) * total;
     const foods = await dish.find().skip(start).limit(total);
     const count = Math.ceil(await dish.find().countDocuments() / total);
-
+    if (loginUser) {
+        const history = await search_history.find({userId: loginUser._id}).limit(5)
+        // const foods = dishSample;
+        // const count = foods.length;
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: foods,
+            count: count,
+            currentPage: currentPage,
+            history: history
+        })
+    }
+    
+    else {
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: foods,
+            count: count,
+            currentPage: currentPage
+        })
+    }
     console.log(count + " :=> " + foods);
-    // const foods = dishSample;
-    // const count = foods.length;
-    res.render("showDishes", {
-        loginUser: loginUser,
-        foods: foods,
-        count: count,
-        currentPage: currentPage
 
-    })
 })
 route.post("/saveRegistration", async (req, res) => {
     const data = await User.create(req.body)
@@ -148,11 +161,60 @@ route.post("/searchFood", async (req, res) => {
     const loginUser = req.session.loginUser;
     const search = req.body.foodSearch
     const data = await dish.find({ "dname": new RegExp(search, 'i') });
-    res.render("showDishes", {
-        loginUser: loginUser,
-        foods: data,
-        searchKey: search
-    })
+
+    if (loginUser){
+        const find = await search_history.findOne({"userId": loginUser._id, "dname" : search}).exec()
+        if (!find) {
+            const temp = await search_history.create({"userId": loginUser._id, "dname" : search})
+        }
+        const history = await search_history.find({userId: loginUser._id}).limit(5)
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: data,
+            searchKey: search,
+            history: history
+        })
+    }
+    else {
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: data,
+            searchKey: search
+        })
+    }
+})
+
+route.get("/searchFood", async (req, res) => {
+    const search = req.query.key
+    const loginUser = req.session.loginUser
+    const data = await dish.find({"dname": new RegExp(search, 'i')})
+
+    if (loginUser){
+        const find = await search_history.find({"userId": loginUser._id, "dname" : search})
+        if (!find) {
+            const temp = await search_history.create({"userId": loginUser._id, "dname" : search})
+        }
+        const history = await search_history.find({userId: loginUser._id}).limit(5)
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: data,
+            searchKey: search,
+            history: history
+        })
+    }
+    else {
+        res.render("showDishes", {
+            loginUser: loginUser,
+            foods: data,
+            searchKey: search
+        })
+    }
+})
+
+route.get("/delHistory", async (req, res) => {
+    const key = req.query.key
+    search_history.find({_id: key}).deleteOne().exec()
+    res.json({msg: 'Thành công'})
 })
 
 //save dish here
@@ -462,5 +524,7 @@ route.get("/user/history", async (req, res) => {
         })
     }
 })
+
+
 
 module.exports = route

@@ -166,4 +166,34 @@ $(document).ready(function () {
     updateCart();
 })
 
+function showHistory () {
+    const history = document.querySelector(".history")
+    history.classList.add("show")
+}
 
+function hideHistory() {
+    const history = document.querySelector(".history")
+    const search_contain = document.querySelector(".search_contain")
+    search_contain.addEventListener('click', (event) => {
+        event.stopPropagation()
+    })
+    history.classList.remove("show")
+}
+
+function delHistory(key, index) {
+    $(document).ready(function() {
+        $.ajax({
+            method: "GET",
+            url: `/delHistory?key=${key}`,   // your api or url for fetching data
+            dataType: 'json',
+            success: function (response) {
+                $(`.item_contain_${index}`).remove()
+            },
+            error: function (result) {
+                console.log('Error: ', result)
+            }
+        })
+    })
+}
+
+document.addEventListener('click', hideHistory)

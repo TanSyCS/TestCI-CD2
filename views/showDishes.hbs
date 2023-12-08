@@ -17,9 +17,18 @@
         <div class="container">
             <form action="/searchFood" method="post">
                 <div class="row search-panel">
-                    <div class="col-md-4 offset-md-3 mt-1">
-                        <input value="{{searchKey}}" placeholder="Tìm món ăn..."
-                            class="form-control search-bar" type="text" name="foodSearch" id="">
+                    <div class="search_contain col-md-4 offset-md-3 mt-1">
+                        <input onfocus="showHistory()" value="{{searchKey}}" placeholder="Tìm món ăn..."
+                            class="form-control search-bar" type="text" name="foodSearch" id="" autocomplete="off">
+
+                        <div class="history">
+                            {{#each history}}
+                            <div class="item_contain item_contain_{{@index}}">
+                                <a href="/searchFood?key={{this.dname}}" class="history_item">{{this.dname}}</a>
+                                <a href="#" onclick="delHistory('{{this._id}}', {{@index}})" class="item_del">Xóa</a>
+                            </div>
+                            {{/each}}
+                        </div>
                     </div>
                     <div class="col-md-2 text-center mt-1">
                         <button type="submit" class="white-btn2">Tìm kiếm</button>
