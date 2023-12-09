@@ -19,8 +19,8 @@
 
                     <div class="col-md-3">
                         <h4>Phương thức thanh toán</h4>
-                        <h4 class="text-muted">Tiền mặt khi nhận hàng <input type="radio" name="payment" id="offline"></h4>
-                        <h4 class="text-muted">Thanh toán trực tuyến <input type="radio" name="payment" id="online"></h4>
+                        <h4 class="text-muted">Tiền mặt <input type="radio" name="payment" id="offline"></h4>
+                        <h4 class="text-muted">Chuyển khoản <input type="radio" name="payment" id="online"></h4>
                     </div>
 
                     <div class="col-md-9">
@@ -57,9 +57,9 @@
         if (localStorage.length != 0 != 0) {
             var paymentType = '';
             if (document.getElementById('offline').checked)
-                paymentType = 'cash on delivery';
+                paymentType = 'Tiền mặt';
             else if (document.getElementById('online').checked)
-                paymentType = 'online';
+                paymentType = 'Chuyển khoản';
             else {
                 Swal.fire({
                     title: 'Vui lòng chọn phương thức thanh toán',
