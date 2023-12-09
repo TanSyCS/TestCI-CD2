@@ -243,7 +243,7 @@ route.get("/admin/cooking/:id", async (req, res) => {
     if (req.session.loginUser) {
         if (req.session.loginUser.type == 'admin') {
             
-            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Cooking" } })
+            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Chế biến" } })
             res.redirect("/admin/adminOrder/1")
         }else
         res.send("<h2>Wrong page try to access...</h2>")
@@ -257,7 +257,7 @@ route.get("/admin/deliver/:id", async (req, res) => {
     if (req.session.loginUser) {
         if (req.session.loginUser.type == 'admin') {
         
-            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Out for deliver." } })
+            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Giao hàng" } })
             
             res.redirect("/admin/adminOrder/1")
         }else
@@ -272,7 +272,7 @@ route.get("/admin/handover/:id", async (req, res) => {
     if (req.session.loginUser) {
         if (req.session.loginUser.type == 'admin') {
             console.log("function i scalled")
-            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Order completed." } })
+            const data = await order.updateOne({ _id: req.params.id }, { $set: { states: "Hoàn thành" } })
     
             res.redirect("/admin/adminOrder/1")
         }else
